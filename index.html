@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #fdf9f3;
+  color: #3b2f2f;
+}
+
+/* COVER */
+.cover {
+  height: 100vh;
+  background: url('bg-keraton.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-box {
+  background: rgba(255,255,255,0.9);
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+  border: 3px solid #b89b5e;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+}
+.cover button {
+  margin-top: 25px;
+  padding: 14px 35px;
+  background: #8b6b2e;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* SECTION */
+section {
+  padding: 90px 20px;
+  text-align: center;
+}
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+}
+
+/* DIVIDER */
+.divider {
+  width: 100px;
+  height: 4px;
+  background: #b89b5e;
+  margin: 20px auto;
+}
+
+/* GALERI (UKURAN DIKECILKAN) */
+.galeri{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:12px;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.galeri img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 6px 15px rgba(0,0,0,.15);
+  transition:.4s;
+}
+
+.galeri img:hover{
+  transform:scale(1.05);
+}
+
+/* COUNTDOWN */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.time-box {
+  background: #8b6b2e;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 80px;
+}
+
+/* RSVP */
+.rsvp {
+  background: #8b6b2e;
+  color: white;
+  padding: 60px 20px;
+}
+
+/* FOOTER */
+footer {
+  background: #3b2f2f;
+  color: white;
+  padding: 40px;
+}
+
+.jadwal-box {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.jadwal-item {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  border-top: 6px solid #b89b5e;
+}
+
+.jadwal-item h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+}
+
+#namaTamu {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin: 10px 0 20px;
+  color: #3b2f2f;
+}
+
+/* MEMPELAI (UKURAN DIPERKECIL) */
+.mempelai-box{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+.mempelai{
+  max-width:200px;
+}
+
+.mempelai img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:50% 50% 18% 18%;
+  border:3px solid #b89b5e;
+  box-shadow:0 6px 15px rgba(0,0,0,.18);
+  margin-bottom:12px;
+}
+
+.mempelai h3{
+  font-size:18px;
+}
+
+.mempelai p{
+  font-size:14px;
+  opacity:.85;
+}
+
+.ornamen-jawa{
+  display:block;
+  margin:15px auto;
+  width:500px;   /* 🔥 UBAH DI SINI */
+  opacity:0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="musik" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div class="cover-box" data-aos="zoom-in">
+    <p>Kepada Yth.</p>
+<h3 id="namaTamu">Tamu Undangan</h3>
+<p>Undangan Pernikahan</p>
+    <h1>Syifa & Rafli</h1>
+    <p>Minggu, 31 Mei 2026</p>
+    <button onclick="bukaUndangan()">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- MEMPELAI -->
+<section data-aos="fade-up">
+  <h2>Assalamu’alaikum</h2>
+  <div class="divider"></div>
+  <p>
+    Dengan rahmat Allah SWT, kami bermaksud menyelenggarakan pernikahan
+    putra-putri kami
+  </p>
+
+  <div class="mempelai-box">
+
+    <div class="mempelai" data-aos="fade-right">
+      <img src="perempuan1.jpg" alt="Syifa" onerror="this.style.display='none'">
+      <h3>Syifa Auliya Ramadhani</h3>
+      <p>Putri dari Bapak Prawito & Ibu Catur Tri Astuti</p>
+    </div>
+
+    <div class="mempelai" data-aos="fade-left">
+      <img src="laki1.jpg" alt="Rafli" onerror="this.style.display='none'">
+      <h3>Rafli Mahardhika</h3>
+      <p>Putra dari Bapak Marjuki & Ibu Emah Uhaemah</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- JADWAL ACARA -->
+<section data-aos="fade-up" style="background:#f3ede7;">
+  <h2>Akad dan Resepsi</h2>
+  <img src="galeri4.jpg" class="ornamen-jawa">
+  <div class="divider"></div>
+
+  <p style="font-style:italic; max-width:700px; margin:0 auto 40px;">
+    Dengan mengucap syukur kepada Allah SWT, 
+    semoga memberikan keselamatan, kelancaran, serta berkah pada acara pernikahan putra-putri kami.
+  </p>
+
+  <div class="jadwal-box">
+
+    <div class="jadwal-item">
+      <h3>Akad Nikah</h3>
+      <p>
+        🗓 Minggu, 31 Mei 2026<br>
+        ⏰ 09.00 – 10.00 WIB<br>
+        📍 BSI Convention Center Kaliabang
+      </p>
+    </div>
+
+    <div class="jadwal-item">
+      <h3>Resepsi</h3>
+      <p>
+        🗓 Minggu, 31 Mei 2026<br>
+        ⏰ 11.00 – 14.00 WIB<br>
+        📍 BSI Convention Center Kaliabang
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- QS AR-RUM 21 -->
+<section data-aos="fade-up">
+  <h2>QS Ar-Rum : 21</h2>
+  <div class="divider"></div>
+
+  <p style="
+    font-size:28px;
+    font-family:'Playfair Display', serif;
+    direction: rtl;
+    line-height:2.2;
+    max-width:800px;
+    margin:0 auto;">
+    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+    لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ
+    إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+  </p>
+
+  <p style="max-width:700px;margin:30px auto;line-height:1.8;">
+    “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+    pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+    dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+    kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
+    tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”
+  </p>
+</section>
+
+
+<!-- COUNTDOWN -->
+<section data-aos="fade-up" style="background:#f3ede7;">
+  <h2>Menuju Hari Bahagia</h2>
+  <div class="divider"></div>
+  <div class="countdown">
+    <div class="time-box"><span id="hari"></span><br>Hari</div>
+    <div class="time-box"><span id="jam"></span><br>Jam</div>
+    <div class="time-box"><span id="menit"></span><br>Menit</div>
+    <div class="time-box"><span id="detik"></span><br>Detik</div>
+  </div>
+</section>
+
+<!-- LOKASI ACARA -->
+<section data-aos="fade-up">
+  <h2>Lokasi Acara</h2>
+  <div class="divider"></div>
+  <p>BSI Convention Center Kaliabang<br>Bekasi Utara</p>
+
+  <!-- QR LOKASI -->
+  <img 
+    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.google.com/maps/search/?api=1&query=BSI+Convention+Center+Kaliabang+Bekasi"
+    width="200"
+    style="margin:20px auto;display:block;"
+    alt="QR Lokasi Acara">
+
+  <!-- TOMBOL MAPS -->
+  <a 
+    href="https://www.google.com/maps/search/?api=1&query=BSI+Convention+Center+Kaliabang+Bekasi"
+    target="_blank"
+    style="display:inline-block;
+           margin-top:15px;
+           padding:12px 30px;
+           background:#8b6b2e;
+           color:white;
+           border-radius:30px;
+           text-decoration:none;
+           font-weight:bold;">
+    📍 Buka Google Maps
+  </a>
+</section>
+
+<!-- GALERI -->
+<section data-aos="fade-up">
+  <h2>Galeri</h2>
+  <div class="divider"></div>
+  <div class="galeri">
+    <img src="galeri1.jpg">
+    <img src="galeri2.jpg">
+    <img src="galeri3.jpg">
+  </div>
+</section>
+
+<!-- AMPLOP DIGITAL -->
+<section data-aos="fade-up" style="background:#f3ede7;">
+  <h2>Amplop Digital</h2>
+  <div class="divider"></div>
+  <p>Doa restu Anda merupakan hadiah terindah bagi kami</p>
+
+  <div style="max-width:400px;margin:30px auto;
+              background:white;padding:30px;
+              border-radius:20px;
+              border:2px solid #b89b5e;">
+    <h3>Bank BCA</h3>
+    <p id="rek">6241689791</p>
+    <p>a.n. Rafli Mahardhika</p>
+
+    <button onclick="copyRek()"
+      style="padding:10px 25px;
+             background:#8b6b2e;
+             color:white;
+             border:none;
+             border-radius:25px;
+             cursor:pointer;">
+      Salin Nomor Rekening
+    </button>
+
+    <hr style="margin:25px 0">
+
+    <p><b>QRIS</b></p>
+    <img src="qris.jpg" width="180">
+  </div>
+</section>
+
+<!-- BUKU TAMU & UCAPAN -->
+<section data-aos="fade-up" style="background:#fdf9f3;">
+  <h2>Buku Tamu & Ucapan</h2>
+  <div class="divider"></div>
+
+  <p style="max-width:600px;margin:0 auto 25px;">
+    Sampaikan doa & ucapan terbaik Anda untuk kami
+  </p>
+
+  <a href="https://docs.google.com/spreadsheets/d/1mYz9o26I4jKH50DnkuR4HH2D_TUMPXB_hgYw50kWa84/edit?usp=sharing"
+     target="_blank"
+     style="display:inline-block;
+            padding:14px 34px;
+            background:#8b6b2e;
+            color:white;
+            border-radius:30px;
+            text-decoration:none;
+            font-weight:bold;">
+    💌 Isi Ucapan & Doa
+  </a>
+</section>
+
+  <div id="listUcapan" style="max-width:600px;margin:40px auto;text-align:left;"></div>
+</section>
+
+
+<script>
+function copyRek() {
+  navigator.clipboard.writeText("1234567890");
+  alert("Nomor rekening berhasil disalin");
+}
+</script>
+
+<!-- KONFIRMASI KEHADIRAN -->
+<section class="rsvp" data-aos="fade-up" style="background:#8b6b2e;color:white;">
+  <h2>Konfirmasi Kehadiran</h2>
+  <p>Kami menantikan kehadiran Bapak/Ibu</p>
+
+  <form id="rsvpForm" style="max-width:420px;margin:30px auto;">
+    <input type="text" id="rsvpNama" placeholder="Nama Anda" required
+      style="width:100%;padding:12px;margin-bottom:12px;
+             border-radius:10px;border:none;">
+
+    <select id="rsvpStatus" required
+      style="width:100%;padding:12px;
+             border-radius:10px;border:none;">
+      <option value="">-- Konfirmasi Kehadiran --</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
+
+    <button type="submit"
+      style="margin-top:18px;
+             padding:12px 30px;
+             background:white;
+             color:#8b6b2e;
+             border:none;
+             border-radius:25px;
+             font-weight:bold;
+             cursor:pointer;">
+      Kirim Konfirmasi
+    </button>
+  </form>
+
+  <div id="hasilRSVP" style="margin-top:25px;"></div>
+</section>
+
+
+<footer>
+  <p>Hormat kami</p>
+  <h3>Syifa & Rafli</h3>
+</footer>
+
+<!-- SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1200 });
+
+function bukaUndangan(){
+  document.getElementById("musik").play();
+  document.getElementById("cover").style.display="none";
+}
+
+// COUNTDOWN
+const target = new Date("May 31, 2026 09:00:00").getTime();
+setInterval(()=>{
+  let now = new Date().getTime();
+  let sisa = target - now;
+  document.getElementById("hari").innerHTML = Math.floor(sisa/(1000*60*60*24));
+  document.getElementById("jam").innerHTML = Math.floor((sisa%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("menit").innerHTML = Math.floor((sisa%(1000*60*60))/(1000*60));
+  document.getElementById("detik").innerHTML = Math.floor((sisa%(1000*60))/1000);
+},1000);
+</script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const tamu = params.get("tamu");
+
+if(tamu){
+  document.getElementById("namaTamu").innerText = decodeURIComponent(tamu);
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+  const hasil = document.getElementById("hasilRSVP");
+
+  if (!form) {
+    console.log("Form RSVP tidak ditemukan");
+    return;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nama = document.getElementById("rsvpNama").value.trim();
+    const status = document.getElementById("rsvpStatus").value;
+
+    if (nama === "" || status === "") {
+      alert("Silakan isi nama dan konfirmasi kehadiran");
+      return;
+    }
+
+    hasil.innerHTML = `
+      <p style="font-size:16px;">
+        Terima kasih <b>${nama}</b>, konfirmasi Anda:
+        <b>${status}</b>
+      </p>
+    `;
+
+    form.reset();
+  });
+});
+</script>
+</body>
+</html>
